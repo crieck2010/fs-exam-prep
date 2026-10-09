@@ -1,0 +1,21 @@
+Metadata-Version: 2.4
+Name: fs-exam-prep
+Version: 0.1.0
+Summary: Parameterized FS exam question-bank engine: seeded, reproducible practice-question generators for all 7 NCEES FS knowledge areas, with a versioned JSON question schema consumed by thin quiz UIs (CLI today, Flutter app tomorrow)
+Author: crieck2010
+License: MIT
+Project-URL: Homepage, https://github.com/crieck2010/fs-exam-prep
+Project-URL: Repository, https://github.com/crieck2010/fs-exam-prep
+Project-URL: Issues, https://github.com/crieck2010/fs-exam-prep/issues
+Keywords: surveying,fs-exam,ncees,question-bank,quiz,education
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: Education
+Classifier: Topic :: Education :: Testing
+Classifier: Topic :: Scientific/Engineering
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Dynamic: license-file
