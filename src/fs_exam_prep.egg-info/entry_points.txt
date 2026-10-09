@@ -1,2 +1,0 @@
-[console_scripts]
-fs-quiz = fs_quiz.cli:main
