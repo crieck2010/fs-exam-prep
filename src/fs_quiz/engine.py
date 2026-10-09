@@ -13,8 +13,13 @@ from fs_quiz import registry
 from fs_quiz.schema import SCHEMA_VERSION, Question
 
 # Import generator modules so they self-register. New domains add one import.
+from fs_quiz.generators import applied_math  # noqa: F401
 from fs_quiz.generators import boundary_law  # noqa: F401
+from fs_quiz.generators import business_ethics  # noqa: F401
+from fs_quiz.generators import geodesy  # noqa: F401
+from fs_quiz.generators import mapping_processes  # noqa: F401
 from fs_quiz.generators import survey_computations  # noqa: F401
+from fs_quiz.generators import surveying_processes  # noqa: F401
 
 
 class QuizEngine:
@@ -48,7 +53,7 @@ class QuizEngine:
         payload = {
             "schema_version": SCHEMA_VERSION,
             "generator": "fs-exam-prep",
-            "engine_version": "0.2.0",
+            "engine_version": "0.3.0",
             "question_count": len(questions),
             "questions": [q.to_dict() for q in questions],
         }

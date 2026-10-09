@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.3.0 — 2026-10-08
+- All 7 FS domains shipped (48 generators total): `surveying-processes-and-methods`
+  (7), `mapping-processes-and-methods` (6), `surveying-principles-geodesy` (5),
+  `business-concepts-ethics` (5), `applied-math-statistics` (6).
+- Mixed-domain bank generation across the full blueprint
+  (`fs-quiz generate --all`).
+- 164 tests passing; every new answer independently re-derived in tests
+  (caught 3 more generator bugs pre-release: duplicate distractors,
+  identical distractor pair).
+
 ## v0.2.0 — 2026-10-08
 - New domain: `boundary-law-and-real-property` with 7 scenario generators
   (hierarchy-of-calls, senior-junior-rights, plss, water-boundaries, easements,

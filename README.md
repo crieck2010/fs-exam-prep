@@ -15,11 +15,10 @@ pure Python, stdlib-only, zero UI imports.
 
 ## Status
 
-**Phase 1 — engine (in progress).** `survey-computations` ✅ and
-`boundary-law-and-real-property` ✅ domains shipped (19 generators,
-75 tests passing). Remaining 5 domains follow the
-[domain checklist](docs/ADDING_A_DOMAIN.md). Phase 2 (Flutter app) and
-Phase 3 (freemium + AdMob monetization) are tracked on the
+**Phase 1 — engine: COMPLETE.** All 7 FS domains shipped — 48 generators,
+164 tests passing. The engine API is stable; `v1.0.0` will lock schema v1
+after a short hardening period. Phase 2 (Flutter app) and Phase 3 (freemium +
+AdMob monetization) are tracked on the
 [FS Exam Prep Quiz App project board](https://github.com/users/crieck2010/projects).
 
 ## The 7 FS domains
@@ -28,11 +27,11 @@ Phase 3 (freemium + AdMob monetization) are tracked on the
 |---|---|---|
 | `survey-computations` | inverse, forward, traverse-misclosure, bowditch, area-coordinates, horizontal-curve, vertical-curve, level-notes, stadia, volumes, error-propagation, angular-misclosure | ✅ v0.1.0 |
 | `boundary-law-and-real-property` | hierarchy-of-calls, senior-junior-rights, plss, water-boundaries, easements, adverse-possession, deeds-recording | ✅ v0.2.0 |
-| `surveying-processes-and-methods` | measurement theory, EDM, leveling, GNSS, traversing | planned |
-| `mapping-processes-and-methods` | contours, projections, GIS, photogrammetry | planned |
-| `surveying-principles-geodesy` | datums, grid vs ground, geoid | planned |
-| `business-concepts-ethics` | Model Rules scenarios, contracts | planned |
-| `applied-math-statistics` | trig, error propagation, distributions | planned |
+| `surveying-processes-and-methods` | error-types, edm-ppm, three-wire, curvature-refraction, gnss-window, traverse-types, accuracy-precision | ✅ v0.3.0 |
+| `mapping-processes-and-methods` | photo-scale, contour-interpolation, utm-zone, raster-vector, lidar-products, state-plane-projection | ✅ v0.3.0 |
+| `surveying-principles-geodesy` | orthometric-height, combined-factor, elevation-factor, datums, grid-vs-ground | ✅ v0.3.0 |
+| `business-concepts-ethics` | duty-hierarchy, sealing, contract-elements, fee-structures, conflict-of-interest | ✅ v0.3.0 |
+| `applied-math-statistics` | law-of-sines, law-of-cosines, std-error-mean, confidence-intervals, significant-figures, unit-conversions | ✅ v0.3.0 |
 
 ## Install
 
@@ -97,9 +96,7 @@ Full details: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) ·
 
 ## Roadmap
 
-- **v0.2.0** — `boundary-law-and-real-property` domain (scenario generators)
-- **v0.3.0** — remaining 5 domains
-- **v1.0.0** — engine API freeze; schema v1 locked
+- **v1.0.0** — engine API freeze; schema v1 locked (hardening only from here)
 - **Phase 2** — Flutter app (iOS + Android) consuming bank JSON
 - **Phase 3** — freemium (free daily quota + ads) + one-time unlock
 
