@@ -59,17 +59,21 @@ def gen_error_types(rng, qid):
 @register(DOMAIN, "edm-ppm")
 def gen_edm_ppm(rng, qid):
     D = rng.uniform(800, 2500)
-    ppm = rng.choice([8, 12, 15, -10])
-    const = rng.choice([-0.10, -0.05, 0.03])
-    corr = D + D * ppm / 1e6 + const
+    # Parameter space is constrained so every pair of choices is separated by
+    # > 0.01 ft (provably distinct at 2 decimals): ppm effect in
+    # [0.0064, 0.0375], |const| in {0.05, 0.10} with const always negative.
+    ppm = rng.choice([8, 12, 15])
+    const = rng.choice([-0.10, -0.05])
+    ppm_eff = D * ppm / 1e6
+    corr = D + ppm_eff + const
     stem = (f"An EDM measures a slope distance of {_fmt(D)} ft. The atmospheric "
             f"correction is {ppm:+d} ppm and the prism constant is {const:+.2f} ft. "
             f"What is the corrected distance?")
     correct = f"{_fmt(corr)} ft"
     distractors = [
-        f"{_fmt(D + D * ppm / 100 + const)} ft",   # ppm treated as percent
-        f"{_fmt(D - D * ppm / 1e6 + const)} ft",   # ppm sign flipped
-        f"{_fmt(D + D * ppm / 1e6)} ft",           # prism constant forgotten
+        f"{_fmt(D + D * ppm / 100 + const)} ft",  # ppm treated as percent
+        f"{_fmt(D - ppm_eff + const)} ft",       # ppm sign flipped
+        f"{_fmt(D - ppm_eff - const)} ft",       # both corrections flipped
     ]
     choices, ai = _mcq(rng, correct, distractors)
     expl = (f"Corrected = D(1 + ppm\u00d710\u207b\u2076) + const = {_fmt(D)}"

@@ -172,7 +172,7 @@ def gen_bowditch(rng, qid):
     distractors = [
         f"{_fmt(-corr)} ft",                                   # sign error
         f"{_fmt(-err * perim / leg)} ft",                      # inverted proportion
-        f"{_fmt(-err / 4)} ft",                                # equal distribution
+        f"{_fmt(-err)} ft",                                   # full error dumped on one leg
     ]
     choices, ai = _mcq(rng, correct, distractors)
     expl = (f"Bowditch: correction = \u2212(error \u00d7 leg / perimeter) = "
@@ -355,17 +355,21 @@ def gen_errprop(rng, qid):
     total = math.hypot(s1, s2)
 
     stem = (f"A distance is measured in two segments with standard errors "
-            f"\u00b1{_fmt(s1, 3)} ft and \u00b1{_fmt(s2, 3)} ft. What is the standard "
+            f"\u00b1{_fmt(s1, 4)} ft and \u00b1{_fmt(s2, 4)} ft. What is the standard "
             f"error of the total distance?")
-    correct = f"\u00b1{_fmt(total, 3)} ft"
+    correct = f"\u00b1{_fmt(total, 4)} ft"
+    # Distractors are separated from the answer and each other by >= 0.005,
+    # so 4-decimal rounding can never collapse them (proven separation).
     distractors = [
-        f"\u00b1{_fmt(s1 + s2, 3)} ft",          # linear sum
-        f"\u00b1{_fmt(s1 * s2, 3)} ft",          # multiplied (wrong operation)
-        f"\u00b1{_fmt(abs(s1 - s2), 3)} ft",     # differenced
+        f"\u00b1{_fmt(s1 + s2, 4)} ft",      # linear sum (classic mistake; always larger)
+        f"\u00b1{_fmt(2 * total, 4)} ft",    # doubled
+        f"\u00b1{_fmt(total / 2, 4)} ft",    # halved
     ]
     choices, ai = _mcq(rng, correct, distractors)
     expl = (f"For a sum, variances add: \u03c3 = \u221a(\u03c3\u00b2\u2081 + \u03c3\u00b2\u2082) "
-            f"= \u221a({_fmt(s1, 3)}\u00b2 + {_fmt(s2, 3)}\u00b2) = \u00b1{_fmt(total, 3)} ft.")
+            f"= \u221a({_fmt(s1, 4)}\u00b2 + {_fmt(s2, 4)}\u00b2) = \u00b1{_fmt(total, 4)} ft. "
+            f"Note the answer lies strictly between the largest single error "
+            f"and the linear sum \u2014 a useful sanity check.")
     return _mk(rng, qid, "error-propagation", 2, stem, choices, ai, expl,
                {"sigma1": s1, "sigma2": s2})
 

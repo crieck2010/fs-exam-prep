@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.0.0 — 2026-10-09
+- **Schema v1 locked** (see `docs/SCHEMA_CONTRACT.md`): machine-readable
+  `schema/question-v1.json`, stdlib-only `contract.py` validator, and a frozen
+  96-question golden fixture — any future breaking change fails tests loudly
+  instead of shipping silently.
+- `import_bank` now validates the full v1 contract (fields, types, unique
+  choices, unique qids, count consistency); new `fs-quiz validate` command
+  for the app build pipeline.
+- Hardening: 60-seed sweep across all 48 topics with zero distractor
+  collisions; fixed 3 latent generator bugs found by the fuzz test
+  (bowditch, error-propagation, edm-ppm distractor collisions).
+- 172 tests passing.
+
 ## v0.3.0 — 2026-10-08
 - All 7 FS domains shipped (48 generators total): `surveying-processes-and-methods`
   (7), `mapping-processes-and-methods` (6), `surveying-principles-geodesy` (5),

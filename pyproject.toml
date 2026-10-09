@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fs-exam-prep"
-version = "0.3.0"
+version = "1.0.0"
 description = "Parameterized FS exam question-bank engine: seeded, reproducible practice-question generators for all 7 NCEES FS knowledge areas, with a versioned JSON question schema consumed by thin quiz UIs (CLI today, Flutter app tomorrow)"
 readme = "README.md"
 requires-python = ">=3.9"

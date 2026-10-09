@@ -60,6 +60,25 @@ def _report(eng, bank, answers):
     return 0 if summary["score_pct"] >= 70 else 1
 
 
+def cmd_validate(args):
+    import json
+    from fs_quiz.contract import validate_bank_dict
+    with open(args.bank) as f:
+        payload = json.load(f)
+    errors = validate_bank_dict(payload)
+    if errors:
+        print(f"INVALID: {len(errors)} contract violation(s) in {args.bank}")
+        for e in errors[:10]:
+            print(f"  - {e}")
+        if len(errors) > 10:
+            print(f"  ... and {len(errors) - 10} more")
+        return 1
+    n = payload["question_count"]
+    print(f"VALID: {args.bank} — schema v1, {n} questions, "
+          f"{len({q['domain'] for q in payload['questions']})} domains")
+    return 0
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(prog="fs-quiz", description="FS exam question-bank CLI")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -79,6 +98,10 @@ def main(argv=None):
     q = sub.add_parser("quiz", help="take an interactive quiz from a bank file")
     q.add_argument("--bank", required=True)
     q.set_defaults(func=cmd_quiz)
+
+    v = sub.add_parser("validate", help="validate a bank file against the v1 contract")
+    v.add_argument("--bank", required=True)
+    v.set_defaults(func=cmd_validate)
 
     args = p.parse_args(argv)
     if args.cmd == "generate" and not args.all and not args.topic:

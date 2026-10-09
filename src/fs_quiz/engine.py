@@ -53,7 +53,7 @@ class QuizEngine:
         payload = {
             "schema_version": SCHEMA_VERSION,
             "generator": "fs-exam-prep",
-            "engine_version": "0.3.0",
+            "engine_version": "1.0.0",
             "question_count": len(questions),
             "questions": [q.to_dict() for q in questions],
         }
@@ -62,11 +62,14 @@ class QuizEngine:
         return path
 
     def import_bank(self, path: str) -> list:
+        from fs_quiz.contract import validate_bank_dict
         with open(path) as f:
             payload = json.load(f)
-        if payload.get("schema_version") != SCHEMA_VERSION:
+        errors = validate_bank_dict(payload)
+        if errors:
             raise ValueError(
-                f"bank schema_version {payload.get('schema_version')} != engine {SCHEMA_VERSION}"
+                "bank failed v1 contract validation:\n" + "\n".join(errors[:10])
+                + (f"\n... and {len(errors) - 10} more" if len(errors) > 10 else "")
             )
         return [Question.from_dict(q) for q in payload["questions"]]
 

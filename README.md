@@ -3,6 +3,11 @@
 **A parameterized question-bank engine for the NCEES FS exam — infinite,
 seeded, reproducible practice questions for all 7 FS knowledge areas.**
 
+**v1.0.0 — schema v1 locked.** The question-bank contract is frozen and
+machine-enforced (see `docs/SCHEMA_CONTRACT.md`): the Flutter app and any
+other consumer can build against `schema/question-v1.json` with confidence
+that v1 banks will always parse.
+
 Instead of a static list of 200 stale questions, `fs-exam-prep` *generates*
 questions: each generator randomizes its numbers from a seed, so the bank is
 effectively infinite and every practice run is fresh. Same seed replays
@@ -15,9 +20,9 @@ pure Python, stdlib-only, zero UI imports.
 
 ## Status
 
-**Phase 1 — engine: COMPLETE.** All 7 FS domains shipped — 48 generators,
-164 tests passing. The engine API is stable; `v1.0.0` will lock schema v1
-after a short hardening period. Phase 2 (Flutter app) and Phase 3 (freemium +
+**Phase 1 — engine: COMPLETE (v1.0.0).** All 7 FS domains shipped — 48 generators,
+172 tests passing — and schema v1 is locked and machine-enforced
+(`docs/SCHEMA_CONTRACT.md`). Phase 2 (Flutter app) and Phase 3 (freemium +
 AdMob monetization) are tracked on the
 [FS Exam Prep Quiz App project board](https://github.com/users/crieck2010/projects).
 
@@ -96,7 +101,7 @@ Full details: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) ·
 
 ## Roadmap
 
-- **v1.0.0** — engine API freeze; schema v1 locked (hardening only from here)
+- **v1.0.0** ✅ — schema v1 locked; engine API stable
 - **Phase 2** — Flutter app (iOS + Android) consuming bank JSON
 - **Phase 3** — freemium (free daily quota + ads) + one-time unlock
 

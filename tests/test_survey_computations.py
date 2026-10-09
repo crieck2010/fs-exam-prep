@@ -61,7 +61,7 @@ def _recompute(q):
     if t == "volumes":
         return f"{p['L'] * (p['A1'] + p['A2']) / 2 / 27:.1f} CY"
     if t == "error-propagation":
-        return f"\u00b1{math.hypot(p['sigma1'], p['sigma2']):.3f} ft"
+        return f"\u00b1{math.hypot(p['sigma1'], p['sigma2']):.4f} ft"
     if t == "angular-misclosure":
         obs_min = (p["observed_sum"] - (p["n"] - 2) * 180.0) * 60.0
         return f"{obs_min:.1f}\u2032"
