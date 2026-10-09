@@ -1,6 +1,7 @@
 """Engine tests: generation, bank round-trip, grading, replay stability."""
 import os
 
+from fs_quiz import registry
 from fs_quiz.engine import QuizEngine
 
 
@@ -17,7 +18,9 @@ def test_generate_bank_covers_all_registered_topics(tmp_path):
     bank = eng.generate_bank(n_per_topic=2, seed=0)
     topics = {(q.domain, q.topic) for q in bank}
     assert ("survey-computations", "inverse") in topics
-    assert len(bank) == 12 * 2  # 12 topics x 2
+    assert ("boundary-law-and-real-property", "hierarchy-of-calls") in topics
+    n_topics = sum(len(registry.list_topics(d)) for d in registry.list_domains())
+    assert len(bank) == n_topics * 2
     assert len({q.qid for q in bank}) == len(bank)  # qids unique
 
 

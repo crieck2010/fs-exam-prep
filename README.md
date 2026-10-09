@@ -15,8 +15,9 @@ pure Python, stdlib-only, zero UI imports.
 
 ## Status
 
-**Phase 1 — engine (in progress).** `survey-computations` domain shipped
-(12 generators, 52 tests passing). Remaining 6 domains follow the
+**Phase 1 — engine (in progress).** `survey-computations` ✅ and
+`boundary-law-and-real-property` ✅ domains shipped (19 generators,
+75 tests passing). Remaining 5 domains follow the
 [domain checklist](docs/ADDING_A_DOMAIN.md). Phase 2 (Flutter app) and
 Phase 3 (freemium + AdMob monetization) are tracked on the
 [FS Exam Prep Quiz App project board](https://github.com/users/crieck2010/projects).
@@ -26,7 +27,7 @@ Phase 3 (freemium + AdMob monetization) are tracked on the
 | Domain | Generators | Status |
 |---|---|---|
 | `survey-computations` | inverse, forward, traverse-misclosure, bowditch, area-coordinates, horizontal-curve, vertical-curve, level-notes, stadia, volumes, error-propagation, angular-misclosure | ✅ v0.1.0 |
-| `boundary-law-and-real-property` | hierarchy of calls, senior/junior rights, PLSS, water boundaries, easements, adverse possession, deeds/recording | planned |
+| `boundary-law-and-real-property` | hierarchy-of-calls, senior-junior-rights, plss, water-boundaries, easements, adverse-possession, deeds-recording | ✅ v0.2.0 |
 | `surveying-processes-and-methods` | measurement theory, EDM, leveling, GNSS, traversing | planned |
 | `mapping-processes-and-methods` | contours, projections, GIS, photogrammetry | planned |
 | `surveying-principles-geodesy` | datums, grid vs ground, geoid | planned |

@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.2.0 — 2026-10-08
+- New domain: `boundary-law-and-real-property` with 7 scenario generators
+  (hierarchy-of-calls, senior-junior-rights, plss, water-boundaries, easements,
+  adverse-possession, deeds-recording).
+- Scenario templates with randomized names/dates/measurements; answers
+  re-derivable from question parameters (tests re-derive every answer
+  independently, including an independent PLSS boustrophedon implementation).
+- 75 tests passing (52 from v0.1.0 + 23 new).
+
 ## v0.1.0 — 2026-10-08
 - Initial release: `survey-computations` domain with 12 parameterized generators
   (inverse, forward, traverse-misclosure, bowditch, area-coordinates,
