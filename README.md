@@ -1,3 +1,7 @@
+> [!IMPORTANT]
+> **Consolidated into [NCEES Exam Prep](https://github.com/crieck2010/ncees-exam-prep)**  
+> This project has been consolidated into the unified [ncees-exam-prep monorepo](https://github.com/crieck2010/ncees-exam-prep). Active development, releases, question bank generation, and CI testing now live in `ncees-exam-prep`. This repository is preserved as an archive.
+
 # fs-exam-prep
 
 **A parameterized question-bank engine for the NCEES FS exam — infinite,
@@ -114,3 +118,4 @@ content only (never reproduce NCEES or publisher items).
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
